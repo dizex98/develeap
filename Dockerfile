@@ -1,8 +1,10 @@
-FROM python:3.10-alpine3.21
+FROM python:3.10.16
 WORKDIR /app
 
 RUN python3.10 -m venv venv
-RUN source venv/bin/activate
+RUN . venv/bin/activate
+
+RUN apt-get update && apt-get install -y pkg-config
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
