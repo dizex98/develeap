@@ -30,9 +30,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: develeap/itay
-        IMAGE_TAG: $(date +%s)
       run: |
-        docker images
-        echo "docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        IMAGE_TAG=$(date +%s)
         docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
