@@ -26,12 +26,12 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-    # - name: Tag, and push image to Amazon ECR
-    #   env:
-    #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    #     ECR_REPOSITORY: develeap/itay
-    #     IMAGE_TAG: $(date +%s)
-    #   run: |
-    #     docker ps
-    #     docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    #     # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    - name: Tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: develeap/itay
+        IMAGE_TAG: $(date +%s)
+      run: |
+        docker ps
+        docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
