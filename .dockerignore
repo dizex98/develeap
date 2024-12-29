@@ -2,3 +2,4 @@ README.md
 init.sql
 Dockerfile
 docker-compose.yaml
+.github/*
