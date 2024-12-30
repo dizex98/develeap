@@ -3,3 +3,4 @@ init.sql
 Dockerfile
 docker-compose.yaml
 .github/*
+terraform/*
