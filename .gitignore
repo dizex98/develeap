@@ -7,6 +7,8 @@ pyvenv.cfg
 instance/
 .env
 
+*tfstate*
+*.terraform*
 # IDE
 .vscode/
 .idea/
