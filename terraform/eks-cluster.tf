@@ -12,6 +12,7 @@ module "eks" {
 
   enable_cluster_creator_admin_permissions = true
 
+
   eks_managed_node_groups = {
     itay-ng = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
@@ -22,6 +23,14 @@ module "eks" {
       max_size     = 1
       desired_size = 1
     }
+  }
+}
+
+# this resource meant to login to the cluster automatically and prevent issues with additional manifests to install
+
+resource "null_resource" "kubectl" {
+  provisioner "local-exec" {
+      command = "aws eks --region ${var.region} update-kubeconfig --name ${var.cluster_name}"
   }
 }
 
