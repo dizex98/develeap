@@ -2,11 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
     tags:
       - '*'
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   
@@ -14,11 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: GitHub Tag Name example
-      run: |
-        echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-        echo "Tag name from github.ref_name: ${{  github.ref_name }}"
       
     - uses: actions/checkout@v4
     - name: Build the Docker image
@@ -41,5 +33,5 @@ jobs:
         ECR_REPOSITORY: develeap/itay
       run: |
         IMAGE_TAG=${GITHUB_REF#refs/tags/}
-        docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_REF_NAME
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_REF_NAME
