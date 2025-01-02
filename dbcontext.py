@@ -18,7 +18,7 @@ config = {
 }
 
 def demo_data() -> list[Person]:
-    person1 = Person(1, "John", "Doe", 30, "76 Ninth Avenue St, New York, NY 10011, USA", "Google")
+    person1 = Person(1, "John", "John", 30, "76 Ninth Avenue St, New York, NY 10011, USA", "Google")
     person2 = Person(2, "Jane", "Doe", 28, "15 Aabogade St, Aarhus, Denmark 8200", "Microsoft")
     person3 = Person(3, "Jack", "Doe", 25, "98 Yigal Alon St, Tel Aviv, Israel 6789141", "Amazon")
 

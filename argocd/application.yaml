@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: app
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
     path: helm/app
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: app
 ---
 # apiVersion: v1
 # kind: Secret

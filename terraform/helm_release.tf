@@ -26,6 +26,6 @@ resource "helm_release" "argocd" {
 
 resource "kubectl_manifest" "config" {
   yaml_body  = file("../argocd/application.yaml")
-  depends_on = [helm_release.argocd]
+  depends_on = [helm_release.argocd,null_resource.kubectl]
 }
 
