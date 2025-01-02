@@ -43,3 +43,11 @@ The following environment variables are required when deploying the application 
 ```
 aws eks update-kubeconfig --name <cluster-name>
 ```
+
+For new tag or image you'll need to do these two steps:
+
+- change what ever code you want
+- update the on ./helm/app/Chart.yaml appVersion <some_tag>
+- git commit -am "new changes"
+- git tag <some_tag>
+- git push origin main --tags

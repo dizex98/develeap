@@ -32,6 +32,5 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: develeap/itay
       run: |
-        IMAGE_TAG=${GITHUB_REF#refs/tags/}
         docker tag develeap/itay:latest $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_REF_NAME
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_REF_NAME
