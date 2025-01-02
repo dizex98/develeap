@@ -1,7 +1,7 @@
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   version         = "20.31.6"
-  cluster_name    = local.cluster_name
+  cluster_name    = var.cluster_name
   cluster_version = "1.31"
   subnet_ids         = module.vpc.private_subnets
 
@@ -13,10 +13,10 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
 
   eks_managed_node_groups = {
-    example = {
+    itay-ng = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = "AL2023_x86_64_STANDARD"
-      instance_types = ["t3a.micro"]
+      instance_types = ["t3a.medium"]
 
       min_size     = 1
       max_size     = 1
